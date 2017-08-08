@@ -1,0 +1,4 @@
+Angular calls lifecycle hook methods on directives and components as it creates, changes, and destroys them.
+
+Directive and component instances have a lifecycle as Angular creates, updates, and destroys them.
+

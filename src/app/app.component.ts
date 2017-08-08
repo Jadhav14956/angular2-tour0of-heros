@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Hero} from './hero/hero';
-
+import {HeroService} from './services/hero.service';
 
 @Component({
   selector: 'my-app',
@@ -64,30 +64,50 @@ import {Hero} from './hero/hero';
                 margin-right: .8em;
                 border-radius: 4px 0 0 4px;
               }`
-          ]
+          ],
+    providers: [HeroService]
 })
 
-export class AppComponent  { 
-    title = 'Tour of heroes';
+export class AppComponent implements OnInit  { 
+  ngOnInit(): void {
+    //throw new Error("Method not implemented.");
+    console.log('In OnInit.');
+    this.getHero();
+  }
+  title = 'Tour of heroes';
     selectedHero : Hero;
-    heroes : Hero[] = [
-        { id: 11, name: 'Mr. Nice' },
-        { id: 12, name: 'Narco' },
-        { id: 13, name: 'Bombasto' },
-        { id: 14, name: 'Celeritas' },
-        { id: 15, name: 'Magneta' },
-        { id: 16, name: 'RubberMan' },
-        { id: 17, name: 'Dynama' },
-        { id: 18, name: 'Dr IQ' },
-        { id: 19, name: 'Magma' },
-        { id: 20, name: 'Tornado' }
-    ];
+    
+    constructor(private heroService : HeroService){ }
+
+    
+
+    // heroes : Hero[] = [
+    //     { id: 11, name: 'Mr. Nice' },
+    //     { id: 12, name: 'Narco' },
+    //     { id: 13, name: 'Bombasto' },
+    //     { id: 14, name: 'Celeritas' },
+    //     { id: 15, name: 'Magneta' },
+    //     { id: 16, name: 'RubberMan' },
+    //     { id: 17, name: 'Dynama' },
+    //     { id: 18, name: 'Dr IQ' },
+    //     { id: 19, name: 'Magma' },
+    //     { id: 20, name: 'Tornado' }
+    // ];
+
+    heroes : Hero[] = [];
 
     onSelect(hero : Hero): void{
       this.selectedHero = hero;
       console.log('Newly selected hero : '+ JSON.stringify(this.selectedHero));
     }
 
+    getHero() : void {
+      console.log('Getting heroes.');
+      this.heroService.getHeroes().then(heroList => {
+        console.log('HEROES : ' + JSON.stringify(heroList));
+        this.heroes = heroList;
+      });
+    }
 };
 
 

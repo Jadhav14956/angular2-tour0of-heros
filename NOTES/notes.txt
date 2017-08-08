@@ -9,4 +9,7 @@ The let hero part of the expression identifies hero as the template input variab
 When there is no selectedHero, the ngIf directive removes the hero detail HTML from the DOM. There are no hero detail elements or bindings to worry about.
 
 // ********************************************************
+The providers array tells Angular to create a fresh instance of the HeroService when it creates an AppComponent. The AppComponent, as well as its child components, can use that service to get hero data.
+
+// ********************************************************
 
