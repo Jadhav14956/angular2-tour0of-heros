@@ -1,0 +1,12 @@
+The (*) prefix to ngFor is a critical part of this syntax. It indicates that the <li> element and its children constitute a master template.
+
+The ngFor directive iterates over the component's heroes array and renders an instance of this template for each hero in that array.
+
+The let hero part of the expression identifies hero as the template input variable, which holds the current hero item for each iteration. You can reference this variable within the template to access the current hero's properties.
+
+// ********************************************************
+
+When there is no selectedHero, the ngIf directive removes the hero detail HTML from the DOM. There are no hero detail elements or bindings to worry about.
+
+// ********************************************************
+
